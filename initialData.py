@@ -19,18 +19,29 @@ def get_data(url: str) -> str:
 data = get_data(url)
 time_series = data['Time Series (Daily)']
 
+# convert the time series data into a dataframe
 df = pd.DataFrame.from_dict(time_series, orient='index')
 df.index = pd.to_datetime(df.index)
+df = df.rename_axis('Date').reset_index()
+df = df.rename(columns={
+    '1. open': 'Open',
+    '2. high': 'High',
+    '3. low': 'Low',
+    '4. close': 'Close',
+    '5. volume': 'Volume'
+})
 
 one_year_ago = pd.Timestamp.now() - pd.DateOffset(years=1)
+df = df[df['Date'] >= one_year_ago].sort_values('Date')
 
-df = df[df.index >= one_year_ago].sort_index()
 
-print(df)
 db = sqlite3.connect('historical_data.db')
-cursor = db.cursor
+cursor = db.cursor()
 
-df.to_sql('Stock Prices', db, if_exists='replace', index=False)
 
+df.to_sql('stock_data', db, if_exists='replace', index=False)
+
+
+# commit the changes and close the connection
 db.commit()
 db.close()

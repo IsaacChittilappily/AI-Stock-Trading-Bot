@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from functions.HTML_requests import get_request
-from functions.format_data import format_data
-from functions.update_stock_db import updateStockPrices
+from my_functions.HTML_requests import get_request
+from my_functions.format_data import format_data
+from my_functions.update_stock_db import updateStockPrices
 
 load_dotenv()
 
@@ -13,5 +13,6 @@ years = 10
 
 
 fullData = get_request(url)
-formattedData = format_data(fullData, years=10)
+formattedData = format_data(fullData, years=years)
+
 updateStockPrices(symbol, formattedData)

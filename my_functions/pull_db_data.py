@@ -18,12 +18,3 @@ def get_data_from_db(db_path, table_name):
     data = np.array(data, dtype=float)
 
     return data
-
-db_path = 'historical_data.db' 
-table_name = 'AAPL_stock_data'     
-data = get_data_from_db(db_path, table_name)
-
-X_min = np.min(data, axis=0)
-X_max = np.max(data, axis=0)
-X_scaled = (data - X_min) / (X_max - X_min)
-print(X_scaled)

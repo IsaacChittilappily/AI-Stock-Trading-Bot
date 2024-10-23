@@ -7,7 +7,7 @@ from my_functions.update_stock_db import updateStockPrices
 load_dotenv()
 
 apiKey = os.getenv('ALPHA_VANTAGE_API_KEY')
-symbol = 'AAPL'
+symbol = 'MSFT'
 url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={apiKey}'
 years = 10
 
@@ -15,4 +15,4 @@ years = 10
 fullData = get_request(url)
 formattedData = format_data(fullData, years=years)
 
-updateStockPrices(symbol, formattedData)
+updateStockPrices('historical_data.db', symbol, formattedData)

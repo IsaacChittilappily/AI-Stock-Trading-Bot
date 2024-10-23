@@ -1,10 +1,10 @@
 # function that takes in formatted data as a dataframe and updates the database with the relevant information
 
-def updateStockPrices(symbol: str, df) -> None:
+def updateStockPrices(db_name: str, symbol: str, df) -> None:
 
     import sqlite3
 
-    db = sqlite3.connect('historical_data.db')
+    db = sqlite3.connect(db_name)
     # connect to the database using sqlite
 
     df.to_sql(symbol, db, if_exists='replace', index=False)

@@ -16,7 +16,7 @@ def get_data_from_db(db_path, table_name):
     # close the connection
     conn.close()
 
-    # convert to numpy array
+    # convert to numpy array, with floats as the data type
     data = np.array(data, dtype=float)
 
     return data

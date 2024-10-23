@@ -7,8 +7,8 @@ def updateStockPrices(symbol: str, df) -> None:
     db = sqlite3.connect('historical_data.db')
     # connect to the database using sqlite
 
-    df.to_sql(f'{symbol}_stock_data', db, if_exists='replace', index=False)
-    # if the table for that stock already exists, replace it with the new table 
+    df.to_sql(symbol, db, if_exists='replace', index=False)
+    # converts dataframe to sql database and if the table for that stock already exists, replace it with the new table 
 
     db.commit()
     db.close()

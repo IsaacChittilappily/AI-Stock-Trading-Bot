@@ -1,7 +1,7 @@
 def get_data_from_db(db_path, table_name):
     import sqlite3
     import numpy as np
-    
+
     # connect to the database
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
@@ -20,7 +20,7 @@ def get_data_from_db(db_path, table_name):
     return data
 
 db_path = 'historical_data.db' 
-table_name = 'AAPL_stock_data'     
+table_name = 'AAPL'     
 data = get_data_from_db(db_path, table_name)
 
 X_min = np.min(data, axis=0)

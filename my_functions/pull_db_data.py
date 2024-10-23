@@ -1,3 +1,5 @@
+# this function pulls the stock data from the database, with parameters for the database name and the table name
+
 def get_data_from_db(db_path, table_name):
     import sqlite3
     import numpy as np

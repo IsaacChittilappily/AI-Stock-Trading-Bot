@@ -4,8 +4,8 @@ def get_request(url: str) -> str:
 
     import requests
 
+    # make a GET request and assign the returned data to a variable
     r = requests.get(url)
     data = r.json()
-    # make a GET request and assign the returned data to a variable
 
     return data

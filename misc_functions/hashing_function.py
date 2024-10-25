@@ -15,7 +15,7 @@ def hash(string: str, length: int) -> int:
     sum += ord(char)
 
     # create a string of all the values multipled by a large prime
-    hashed += str(ord(char)*1026029)
+    hashed += str(ord(char) * 1026029)
     
   # returns a scrambled version of the string divided by the sum of the ascii values
   return int(str(int(hashed[1:-1:2]) // sum)[:length])

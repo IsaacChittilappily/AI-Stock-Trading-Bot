@@ -1,4 +1,4 @@
-from my_functions.pull_db_data import get_data_from_db
+from network_functions.pull_db_data import get_data_from_db
 import numpy as np
 import torch
 import torch.nn as nn
@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 
 # pull the data from the data for a specific symbol from the database
 db_path = 'historical_data.db' 
-table_name = 'GOLD'     
+table_name = 'NVDA'     
 data = get_data_from_db(db_path, table_name)
 
 

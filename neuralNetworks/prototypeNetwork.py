@@ -1,5 +1,6 @@
 import numpy as np
 
+# basic code for a neuron
 class Neuron:
     def __init__(self, weights: np.ndarray, bias: float) -> None:
         self.weights = weights

@@ -1,25 +1,27 @@
 import numpy as np
-from my_functions.pull_db_data import get_data_from_db
-from my_functions.min_max_scaling import min_max_scaler
-db_path = 'historical_data.db'
-table_name = 'AAPL'    
-data = get_data_from_db(db_path, table_name)
+from network_functions.pull_db_data import get_data_from_db
+from network_functions.scaling_algorithms.Z_score_scaling import Z_score_scaler
 
 
 class SimpleNeuralNetwork:
     def __init__(self, input_size, hidden_size, output_size, learning_rate=0.001):
-        # initialize weights and biases with smaller random values
-        self.w1 = np.random.randn(input_size, hidden_size) * 0.01
+
+        # initialize weights and biases with  random values
+        self.w1 = np.random.randn(input_size, hidden_size)
         self.b1 = np.zeros((1, hidden_size))
-        self.w2 = np.random.randn(hidden_size, output_size) * 0.01
+        self.w2 = np.random.randn(hidden_size, output_size)
         self.b2 = np.zeros((1, output_size))
         self.learning_rate = learning_rate
 
+    # activation functions
     def tanh(self, x):
         return np.tanh(x)
     
     def relu(self, x):
-        return max(1, x)
+        return max(0, x)
+    
+    def leaky_relu(self, x):
+        return max(0.05*x, x)
 
     def tanh_derivative(self, x):
         return 1 - np.tanh(x) ** 2
@@ -28,7 +30,9 @@ class SimpleNeuralNetwork:
         self.z1 = np.dot(X, self.w1) + self.b1
         self.a1 = self.tanh(self.z1)
         self.z2 = np.dot(self.a1, self.w2) + self.b2
-        output = self.z2  # no activation on the output layer for regression
+        
+        # no activation on the output layer for regression
+        output = self.z2  
         return output
 
     def backward(self, X, y, output):
@@ -64,19 +68,31 @@ class SimpleNeuralNetwork:
     def predict(self, X):
         return self.forward(X)
 
-# prepare data (assuming the last column is the close price to predict)
-X = data[:-1]  # all but the last day
-y = data[1:, 3]  # close prices of the next day
 
-# scale the inputs and outputs
-X = min_max_scaler(X)
-y = min_max_scaler(y)
+
+db_path = 'historical_data.db'
+table_name = 'AAPL'
+data = get_data_from_db(db_path, table_name)
+
+# all but the last day
+X = data[:-1]
+
+# close prices of the next day
+y = data[1:, 3]
+
+
+# prepare data by scaling the inputs and outputs
+X = Z_score_scaler(X)
+y = Z_score_scaler(y)
+
+
+# reshape the close prices to fit the network
 y = y.reshape(-1, 1)
 
 # create and train the network
 nn = SimpleNeuralNetwork(input_size=5, hidden_size=10, output_size=1, learning_rate=0.001)
 nn.train(X, y, epochs=1000)
 
-# make a prediction (for the last day in your dataset)
+# make a prediction
 prediction = nn.predict(X[-1].reshape(1, -1))
 print(f"predicted close price: {prediction[0][0] * np.max(data[:, 3])}")

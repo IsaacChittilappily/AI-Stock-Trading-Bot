@@ -2,6 +2,8 @@
 
 def min_max_scaler(arr: list) -> list:
 
+    import numpy as np
+    
     # get the min and max values from the list
     mini, maxi = min(arr), max(arr)
 
@@ -10,4 +12,3 @@ def min_max_scaler(arr: list) -> list:
 
     return scaled
 
-print(min_max_scaler([1,2,5,9]))

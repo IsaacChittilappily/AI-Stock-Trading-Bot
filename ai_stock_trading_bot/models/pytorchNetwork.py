@@ -1,4 +1,4 @@
-from network_functions.pull_db_data import get_data_from_db
+from ai_stock_trading_bot.database.pull_db_data import get_data_from_db
 import numpy as np
 import torch
 import torch.nn as nn

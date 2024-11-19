@@ -3,9 +3,9 @@
 def collect_data(apikey: str, symbol: str, years: int):
 
     # imports the relevant packages from my files
-    from data_collection.HTML_requests import get_request
-    from data_collection.format_data import format_data
-    from data_collection.update_stock_db import updateStockPrices
+    from ai_stock_trading_bot.data_collection.HTML_requests import get_request
+    from ai_stock_trading_bot.data_collection.format_data import format_data
+    from ai_stock_trading_bot.data_collection.update_stock_db import updateStockPrices
 
     # constructs the url to call alphavantage api
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={apikey}'

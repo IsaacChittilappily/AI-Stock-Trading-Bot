@@ -1,4 +1,7 @@
 import numpy as np
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from network_functions.pull_db_data import get_data_from_db
 from network_functions.scaling_algorithms.Z_score_scaling import Z_score_scaler
 
@@ -70,7 +73,7 @@ class SimpleNeuralNetwork:
 
 
 
-db_path = 'historical_data.db'
+db_path = 'data_collection/historical_data.db'
 table_name = 'AAPL'
 data = get_data_from_db(db_path, table_name)
 

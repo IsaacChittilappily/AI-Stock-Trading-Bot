@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # pull the data from the data for a specific symbol from the database
-db_path = 'historical_data.db' 
+db_path = 'data_collection/historical_data.db' 
 table_name = 'NVDA'     
 data = get_data_from_db(db_path, table_name)
 
@@ -15,10 +15,10 @@ data = get_data_from_db(db_path, table_name)
 # separate features and target (the target is the next day's closing price)
 
 # all rows except the last one
-X = data[:-1]  
+X = data[:-1]
 
 # next day's closing price (index 3 refers to the 'Close' column)
-y = data[1:, 3]  
+y = data[1:, 3]
 
 
 # split into training and validation sets

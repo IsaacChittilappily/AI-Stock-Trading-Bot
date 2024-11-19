@@ -29,7 +29,7 @@ if __name__ == '__main___':
 
     # parameters of the final function
     apikey = os.getenv('ALPHA_VANTAGE_API_KEY')
-    symbol = 'NVDA'
+    symbol = 'AAPL'
     years = 10
 
     collect_data(apikey, symbol, years)

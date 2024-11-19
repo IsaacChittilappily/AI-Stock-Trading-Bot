@@ -19,3 +19,6 @@ def hash(string: str, length: int) -> int:
     
   # returns a scrambled version of the string divided by the sum of the ascii values
   return int(str(int(hashed[1:-1:2]) // sum)[:length])
+
+
+print(hash('testing hash', 10))

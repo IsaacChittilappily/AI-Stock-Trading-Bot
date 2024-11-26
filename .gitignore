@@ -1,6 +1,8 @@
 *.env
 .idea
+.venv
 venv/
+idea/
 .vscode
 .pyc
 .env

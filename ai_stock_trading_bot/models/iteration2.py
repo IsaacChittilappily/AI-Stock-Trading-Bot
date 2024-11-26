@@ -1,9 +1,4 @@
 import numpy as np
-import sys
-import os
-
-# add the root directory to Python path to allow imports from network_functions
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ai_stock_trading_bot.database.pull_db_data import get_data_from_db
 
 db_path = 'data_collection/historical_data.db'

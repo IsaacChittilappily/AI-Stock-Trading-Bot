@@ -1,9 +1,6 @@
 import numpy as np
-import os
-import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ai_stock_trading_bot.database.pull_db_data import get_data_from_db
-from network_functions.scaling_algorithms.Z_score_scaling import Z_score_scaler
+from utils.scaling_algorithms.Z_score_scaling import Z_score_scaler
 
 
 class SimpleNeuralNetwork:

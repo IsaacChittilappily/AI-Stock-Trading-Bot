@@ -1,5 +1,5 @@
 import numpy as np
-from ..database.pull_db_data import get_data_from_db
+from ai_stock_trading_bot.database.pull_db_data import get_data_from_db
 
 db_path = 'data_collection/historical_data.db'
 table_name = 'AAPL'    

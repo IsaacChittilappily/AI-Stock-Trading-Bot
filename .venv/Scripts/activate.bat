@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=c:\Users\chitt\Vscode Projects\AI-Stock-Trading-Bot\.venv
+set VIRTUAL_ENV=c:\Users\chitt\Vscode Projects\AI_Stock_Trading_Bot\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

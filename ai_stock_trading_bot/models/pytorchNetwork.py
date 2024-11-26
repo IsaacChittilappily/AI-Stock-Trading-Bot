@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 
 # pull the data from the data for a specific symbol from the database
 db_path = 'data_collection/historical_data.db' 
-table_name = 'NVDA'     
+table_name = 'AAPL'     
 data = get_data_from_db(db_path, table_name)
 
 

@@ -14,22 +14,7 @@ def collect_data(apikey: str, symbol: str, years: int):
     fullData = get_request(url)
     formattedData = format_data(data=fullData, years=years)
     
-    updateStockPrices('historical_data.db', symbol, formattedData)
+    updateStockPrices('ai_stock_trading_bot/database/historical_data.db', symbol, formattedData)
 
     return 
 
-
-if __name__ == '__main___':
-
-    import os
-    from dotenv import load_dotenv
-
-    # loads my env file which stores my alphavantage 
-    load_dotenv()
-
-    # parameters of the final function
-    apikey = os.getenv('ALPHA_VANTAGE_API_KEY')
-    symbol = 'AAPL'
-    years = 10
-
-    collect_data(apikey, symbol, years)

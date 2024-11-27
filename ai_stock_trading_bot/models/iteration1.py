@@ -1,7 +1,7 @@
 import numpy as np
 from ai_stock_trading_bot.database.pull_db_data import get_data_from_db
 
-db_path = 'data_collection/historical_data.db'
+db_path = 'ai_stock_trading_bot/database/historical_data.db'
 table_name = 'AAPL'    
 data = get_data_from_db(db_path, table_name)
 

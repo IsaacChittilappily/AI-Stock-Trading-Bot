@@ -12,7 +12,6 @@ def trade_decision(close: float, predictedClose: float, buyThreshold: float, sel
 
 
     # if the percentage difference is above/below the buy/sell threshold, return a 1 or -1 to indicate a buy or sell decision
-
     if diff <= sellThreshold: return -1
     elif diff >= buyThreshold: return 1
     

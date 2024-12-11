@@ -11,14 +11,15 @@ setup(
         'pandas',
         'requests',
         'python-dotenv',
-        'alpaca-trade-api'
+        'alpaca-trade-api',
+        'flask'
     ],
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Isaac Chittilappily",
+    author_email="chittilappilyisaac@gmail.com",
     description="An AI-powered stock trading bot using neural networks",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/ai_stock_trading_bot",
+    url="https://github.com/IsaacChittilappily/ai_stock_trading_bot",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

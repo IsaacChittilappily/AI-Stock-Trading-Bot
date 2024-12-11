@@ -12,9 +12,6 @@ def collect_data(apikey: str, symbol: str, years: int):
 
     # call the relevant functions to gather and format the data
     fullData = get_request(url)
-
-    if isinstance(fullData, Exception):
-        return fullData
     
     formattedData = format_data(data=fullData, years=years)
     

@@ -11,10 +11,10 @@ def trade_decision(close: float, predictedClose: float, buyThreshold: float, sel
     diff = ((predictedClose - close) / close) * 100
 
 
-    # if the percentage difference is above/below the buy/sell threshold, return a 1 or -1 to indicate a buy or sell decision
-    if diff <= sellThreshold: return -1
-    elif diff >= buyThreshold: return 1
+    # if the percentage difference is above/below the buy/sell threshold, return 'buy' or 'sell'
+    if diff <= sellThreshold: return 'sell'
+    elif diff >= buyThreshold: return 'buy'
     
-    # in all other cases return 0, which indicates a hold decision
-    return 0
+    # in all other cases return None, which indicates a hold decision (will evaluate to False in the main function)
+    return None
 

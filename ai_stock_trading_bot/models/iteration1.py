@@ -42,5 +42,6 @@ def predict_stock_price(symbol):
     # make a prediction
     prediction = nn.predict(X[-1].reshape(1, -1))
     predicted_price = prediction[0][0] * np.max(data[:, 3])
+    close_price = data[-1][3]  # get the last day's closing price
     
-    return predicted_price
+    return close_price, predicted_price

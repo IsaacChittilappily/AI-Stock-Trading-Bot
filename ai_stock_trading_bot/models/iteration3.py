@@ -4,7 +4,7 @@ from utils.scaling_algorithms.Z_score_scaling import Z_score_scaler
 
 
 def predict_stock_price(symbol):
-    class SimpleNeuralNetwork:
+    class SimpleNeuralNetwork3:
         def __init__(self, input_size, hidden_size, output_size, learning_rate=0.001):
 
             # initialize weights and biases with  random values
@@ -86,11 +86,11 @@ def predict_stock_price(symbol):
     y = y.reshape(-1, 1)
 
     # create and train the network
-    nn = SimpleNeuralNetwork(input_size=5, hidden_size=10, output_size=1, learning_rate=0.001)
+    nn = SimpleNeuralNetwork3(input_size=5, hidden_size=10, output_size=1, learning_rate=0.001)
     nn.train(X, y, epochs=1000)
 
     # make a prediction
     prediction = nn.predict(X[-1].reshape(1, -1))
-    predicted_price = prediction[0][0] * np.max(data[:, 3])
+    close_price = data[-1][3]  # get the last day's closing price
     
-    return predicted_price
+    return close_price, prediction

@@ -95,5 +95,7 @@ def predict_stock_price(symbol):
 
     # predict the next day's closing price
     with torch.no_grad():
+        close_price = data[-1][3]  # get the last day's closing price
         predicted_close = model(last_day_tensor)
-        return predicted_close.item()
+    
+        return close_price, predicted_close.item()
